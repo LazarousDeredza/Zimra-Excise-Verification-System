@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1">
+
+    <title>ZIMRA • Add Taxpayer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <!--<div class="brand">
+
+            <div class="brandmark">
+                Z
+            </div>
+
+            <div>
+                <b>ZIMRA</b>
+                <span>Excise</span>
+            </div>
+
+        </div>
+-->
+
+        <div class="brand">
+            <div class="brand-logo-container">
+                <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+                <div class="brand-text">
+                    <b>ZIMRA</b>
+                    <span>Excise</span>
+                </div>
+            </div>
+        </div>
+
+
+        <nav>
+
+            <a  href="/">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a  href="/returns">
+                <span>▤</span>
+                Surtax Returns
+            </a>
+
+            <a class="active" href="/taxpayers">
+                <span>𖨆𖨆</span>
+                Taxpayers
+            </a>
+
+            <a href="#verification" disabled>
+                <span>✓</span>
+                Verification Queue
+            </a>
+
+            <a href="#reports" disabled>
+                <span>◫</span>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="side-card">
+
+            <div class="pulse"></div>
+
+            <b>System status</b>
+
+            <small>
+                Verification services online
+            </small>
+
+        </div>
+
+
+        <div class="user">
+
+            <div class="avatar">
+                LD
+            </div>
+
+            <div>
+                <b>Revenue Officer</b>
+                <small>Excise Department</small>
+            </div>
+
+            <span>⋮</span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main>
+
+        <header>
+
+            <div>
+
+                <span class="eyebrow">
+                    EXCISE • TAXPAYERS
+                </span>
+
+                <h1>
+                    Add New Taxpayer
+                </h1>
+
+                <p>
+                    Register a taxpayer for Special Surtax verification.
+                </p>
+
+            </div>
+
+
+            <button
+                    class="ghost"
+                    onclick="window.location.href='taxpayers'">
+
+                ← Back to Taxpayers
+
+            </button>
+
+        </header>
+
+
+        <section class="panel form-panel">
+
+            <div class="panel-head">
+
+                <div>
+
+                    <h2>
+                        Taxpayer Information
+                    </h2>
+
+                    <p>
+                        Enter the taxpayer's registration details.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="taxpayerForm">
+
+
+                <!-- TAXPAYER NAME -->
+
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <span>01</span>
+
+                        <div>
+                            <b>Identification</b>
+                            <small>
+                                Taxpayer registration details
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="two">
+
+                        <label>
+
+                            Taxpayer Name
+
+                            <input
+                                    type="text"
+                                    name="taxpayerName"
+                                    required
+                                    placeholder="Registered taxpayer name">
+
+                        </label>
+
+
+                        <label>
+
+                            TIN Number
+
+                            <input
+                                    type="text"
+                                    name="tinNumber"
+                                    required
+                                    placeholder="e.g. 123456789">
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="form-section">
+
+                    <div class="section-title">
+
+                        <span>02</span>
+
+                        <div>
+
+                            <b>Contact Information</b>
+
+                            <small>
+                                Taxpayer contact details
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="two">
+
+                        <label>
+
+                            Phone Number
+
+                            <input
+                                    type="tel"
+                                    name="phoneNumber"
+                                    required
+                                    placeholder="+263 77 123 4567">
+
+                        </label>
+
+                        <label>
+
+                            Email
+
+                            <input
+                                    type="email"
+                                    name="email"
+                                    required
+                                    placeholder="testing@gmail.com">
+
+                        </label>
+
+
+
+
+                    </div>
+
+                    <div class="two">
+
+                        <label>
+
+                            ID Number
+
+                            <input
+                                    type="text"
+                                    name="idNumber"
+                                    required
+                                    placeholder="National ID / Registration number">
+
+                        </label>
+
+
+
+
+                    </div>
+
+
+                    <label>
+
+                        Address
+
+                        <textarea
+                                name="address"
+                                rows="4"
+                                required
+                                placeholder="Taxpayer physical or registered address"></textarea>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                        id="message"
+                        class="form-message">
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                            type="button"
+                            class="ghost"
+                            onclick="window.location.href='taxpayers'">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                            type="submit"
+                            class="primary">
+
+                        Save Taxpayer
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="new-taxpayer.js"></script>
+
+</body>
+
+</html>

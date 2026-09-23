@@ -1,0 +1,326 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>ZIMRA • Surtax Verification</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <!--<div class="brand">
+            <div class="brandmark">Z</div>
+
+            <div>
+                <b>ZIMRA</b>
+                <span>Excise</span>
+            </div>
+        </div>
+-->
+
+        <div class="brand">
+            <div class="brand-logo-container">
+                <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+                <div class="brand-text">
+                    <b>ZIMRA</b>
+                    <span>Excise</span>
+                </div>
+            </div>
+        </div>
+
+        <nav>
+
+            <a  href="/">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a class="active" href="/returns">
+                <span>▤</span>
+                Surtax Returns
+            </a>
+
+            <a  href="/taxpayers">
+                <span>𖨆𖨆</span>
+                Taxpayers
+            </a>
+
+            <a href="#verification" disabled>
+                <span>✓</span>
+                Verification Queue
+            </a>
+
+            <a href="#reports" disabled>
+                <span>◫</span>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="side-card">
+            <div class="pulse"></div>
+            <b>System status</b>
+            <small>Verification services online</small>
+        </div>
+
+        <div class="user">
+            <div class="avatar">LD</div>
+
+            <div>
+                <b>Revenue Officer</b>
+                <small>Excise Department</small>
+            </div>
+
+            <span>⋮</span>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <header>
+
+            <div>
+                <span class="eyebrow">EXCISE • SPECIAL SURTAX</span>
+
+                <h1>Verification Dashboard</h1>
+
+                <p>
+                    Automated validation and Excise workspace.
+                </p>
+            </div>
+
+            <!--            <button class="primary" onclick="openModal()">-->
+            <!--                ＋ New Surtax Return-->
+            <!--            </button>-->
+
+            <button class="primary" onclick="window.location.href='new_return'">
+                ＋ New Surtax Return
+            </button>
+
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat">
+                <span>Total returns</span>
+                <strong id="total">0</strong>
+                <em>All submitted returns</em>
+            </div>
+
+            <div class="stat success">
+                <span>Verified</span>
+                <strong id="verified">0</strong>
+                <em>Passed validation</em>
+            </div>
+
+            <div class="stat warn">
+                <span>Flagged</span>
+                <strong id="flagged">0</strong>
+                <em>Requires review</em>
+            </div>
+
+            <div class="stat blue">
+                <span>Pending</span>
+                <strong id="pending">0</strong>
+                <em>Awaiting verification</em>
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT -->
+        <section class="grid">
+
+            <!-- RETURNS TABLE -->
+            <div class="panel wide">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>Recent returns</h2>
+                        <p>Latest Special Surtax Return submissions</p>
+                    </div>
+
+                    <button class="ghost" onclick="loadReturns()">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Taxpayer</th>
+                            <th>TIN Number</th>
+                            <th>Return Period</th>
+                            <th>Total Payable</th>
+                            <th>Total Paid</th>
+                            <th>Variance</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="rows">
+
+                        <tr>
+                            <td colspan="8" class="empty">
+                                Loading returns…
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- VERIFICATION FLOW -->
+            <div class="panel">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>Verification flow</h2>
+                        <p>Automated control checks</p>
+                    </div>
+
+                </div>
+
+                <div class="flow">
+
+                    <div>
+                        <i>01</i>
+
+                        <div>
+                            <b>Capture</b>
+                            <small>Return submitted to system</small>
+                        </div>
+                    </div>
+
+                    <div>
+                        <i>02</i>
+
+                        <div>
+                            <b>Validate</b>
+                            <small>Rules and arithmetic checks</small>
+                        </div>
+                    </div>
+
+                    <div>
+                        <i>03</i>
+
+                        <div>
+                            <b>Compare</b>
+                            <small>Variance is calculated</small>
+                        </div>
+                    </div>
+
+                    <div>
+                        <i>04</i>
+
+                        <div>
+                            <b>Review</b>
+                            <small>Flagged cases routed to officer</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROL CENTRE -->
+            <div class="panel wide">
+
+                <div class="panel-head">
+
+                    <div>
+                        <h2>Control centre</h2>
+                        <p>Prototype indicators for Excise</p>
+                    </div>
+
+                </div>
+
+                <div class="controls">
+
+                    <div>
+                        <span class="control-icon">✓</span>
+
+                        <b>Arithmetic consistency</b>
+
+                        <small>
+                            Quantity × configured sugar rate
+                        </small>
+                    </div>
+
+                    <div>
+                        <span class="control-icon">⌁</span>
+
+                        <b>Variance detection</b>
+
+                        <small>
+                            Highlights material differences
+                        </small>
+                    </div>
+
+                    <div>
+                        <span class="control-icon">◈</span>
+
+                        <b>Audit-ready results</b>
+
+                        <small>
+                            Verification findings are stored
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="returns.js"></script>
+
+</body>
+</html>

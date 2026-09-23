@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1">
+
+  <title>ZIMRA • Taxpayer Details</title>
+
+  <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+  <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+  <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+  <link
+          rel="stylesheet"
+          href="styles.css">
+
+
+
+  <style>
+    .taxpayer-details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.detail-item {
+    padding: 16px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+}
+
+.detail-item span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6c757d;
+    letter-spacing: 0.4px;
+}
+
+.detail-item strong {
+    display: block;
+    font-size: 14px;
+    color: #212529;
+    word-break: break-word;
+}
+
+@media (max-width: 1000px) {
+
+    .taxpayer-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .taxpayer-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+  </style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <!--<div class="brand">
+
+      <div class="brandmark">
+        Z
+      </div>
+
+      <div>
+        <b>ZIMRA</b>
+        <span>Excise</span>
+      </div>
+
+    </div>
+-->
+
+    <div class="brand">
+      <div class="brand-logo-container">
+        <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+        <div class="brand-text">
+          <b>ZIMRA</b>
+          <span>Excise</span>
+        </div>
+      </div>
+    </div>
+
+
+    <nav>
+
+      <a  href="/">
+        <span>⌂</span>
+        Dashboard
+      </a>
+
+      <a  href="/returns">
+        <span>▤</span>
+        Surtax Returns
+      </a>
+
+      <a class="active"  href="/taxpayers">
+        <span>𖨆𖨆</span>
+        Taxpayers
+      </a>
+
+      <a href="#verification" disabled>
+        <span>✓</span>
+        Verification Queue
+      </a>
+
+      <a href="#reports" disabled>
+        <span>◫</span>
+        Reports
+      </a>
+
+    </nav>
+
+
+    <div class="side-card">
+
+      <div class="pulse"></div>
+
+      <b>System status</b>
+
+      <small>
+        Verification services online
+      </small>
+
+    </div>
+
+
+    <div class="user">
+
+      <div class="avatar">
+        LD
+      </div>
+
+      <div>
+        <b>Revenue Officer</b>
+        <small>Excise Department</small>
+      </div>
+
+      <span>⋮</span>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <header>
+
+      <div>
+
+                <span class="eyebrow">
+                    EXCISE • TAXPAYER
+                </span>
+
+        <h1>
+          Taxpayer Details
+        </h1>
+
+        <p>
+          View taxpayer information and all
+          submitted Special Surtax Returns.
+        </p>
+
+      </div>
+
+
+      <button
+              class="ghost"
+              onclick="goBack()">
+
+        ← Back to Taxpayers
+
+      </button>
+
+    </header>
+
+
+    <!-- TAXPAYER INFORMATION -->
+
+    <section class="panel wide">
+
+      <div class="panel-head">
+
+        <div>
+
+          <h2>
+            Taxpayer Information
+          </h2>
+
+          <p>
+            Registered taxpayer details.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="taxpayer-details-grid">
+
+        <div class="detail-item">
+
+                    <span>
+                        Taxpayer Name
+                    </span>
+
+          <strong id="taxpayerName">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+                    <span>
+                        TIN Number
+                    </span>
+
+          <strong id="tinNumber">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+                    <span>
+                        ID Number
+                    </span>
+
+          <strong id="idNumber">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+                    <span>
+                        Phone Number
+                    </span>
+
+          <strong id="phoneNumber">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+                    <span>
+                        Address
+                    </span>
+
+          <strong id="taxpayerAddress">
+            -
+          </strong>
+
+        </div>
+
+
+        <div class="detail-item">
+
+                    <span>
+                        Taxpayer ID
+                    </span>
+
+          <strong id="taxpayerId">
+            -
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+      <div class="stat">
+
+                <span>
+                    Total Returns
+                </span>
+
+        <strong id="totalReturns">
+          0
+        </strong>
+
+        <em>
+          Submitted returns
+        </em>
+
+      </div>
+
+
+      <div class="stat success">
+
+                <span>
+                    Total Paid
+                </span>
+
+        <strong id="totalPaid">
+          USD 0.00
+        </strong>
+
+        <em>
+          Consolidated payments
+        </em>
+
+      </div>
+
+
+      <div class="stat blue">
+
+                <span>
+                    Total Payable
+                </span>
+
+        <strong id="totalPayable">
+          USD 0.00
+        </strong>
+
+        <em>
+          Consolidated liability
+        </em>
+
+      </div>
+
+    </section>
+
+
+    <!-- RETURNS -->
+
+    <section class="panel wide">
+
+      <div class="panel-head">
+
+        <div>
+
+          <h2>
+            Surtax Returns
+          </h2>
+
+          <p>
+            All returns submitted by this taxpayer.
+          </p>
+
+        </div>
+
+
+        <button
+                class="ghost"
+                onclick="loadTaxpayer()">
+
+          ↻ Refresh
+
+        </button>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>
+              Return Period
+            </th>
+
+            <th>
+              Manufacturer
+            </th>
+
+            <th>
+              Total Payable
+            </th>
+
+            <th>
+              Total Paid
+            </th>
+
+            <th>
+              Variance
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Action
+            </th>
+
+          </tr>
+
+          </thead>
+
+
+          <tbody id="returnRows">
+
+          <tr>
+
+            <td
+                    colspan="8"
+                    class="empty">
+
+              Loading returns…
+
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script src="view-taxpayer.js"></script>
+
+</body>
+
+</html>

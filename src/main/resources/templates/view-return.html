@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1">
+
+  <title>ZIMRA • Return View</title>
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="styles.css">
+
+  <style>
+
+    /* =====================================================
+       RETURN VIEW
+       ===================================================== */
+
+
+.panel{padding:15px}
+
+    .return-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 24px;
+    }
+
+    .return-header-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .info-item {
+        padding: 14px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .info-item span {
+        display: block;
+        font-size: 12px;
+        color: #6c757d;
+        margin-bottom: 5px;
+    }
+
+    .info-item strong {
+        font-size: 14px;
+        color: #212529;
+    }
+
+    .product-table,
+    .payment-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .product-table th,
+    .product-table td,
+    .payment-table th,
+    .payment-table td {
+        padding: 12px;
+        border-bottom: 1px solid #e9ecef;
+        text-align: left;
+        font-size: 13px;
+    }
+
+    .product-table th,
+    .payment-table th {
+        background: #f8f9fa;
+        font-weight: 700;
+    }
+
+    .financial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .financial-item {
+        padding: 20px;
+        border-radius: 10px;
+        background: #f8f9fa;
+    }
+
+    .financial-item span {
+        display: block;
+        color: #6c757d;
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .financial-item strong {
+        font-size: 22px;
+    }
+
+    /* =====================================================
+       VARIANCE
+       ===================================================== */
+
+    .variance-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .variance-circle {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+
+        background-color: #198754;
+    }
+
+    .variance-circle .title {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .variance-circle .amount {
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .variance-circle .label {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .variance-green {
+        background-color: #198754;
+    }
+
+    .variance-red {
+        background-color: #dc3545;
+    }
+
+    .variance-blue {
+        background-color: #0d6efd;
+    }
+
+    /* =====================================================
+       PAYMENT FORM
+       ===================================================== */
+
+
+
+
+    .payment-form {
+    margin-top: 20px;
+    padding: 24px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+
+
+
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.payment-form h3 {
+    margin: 0 0 20px;
+}
+
+/* Payment fields */
+.payment-form-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    gap: 18px;
+    width: 100%;
+}
+
+.form-group {
+    min-width: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-width: 180px;
+    height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    background: #ffffff;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.08);
+}
+
+/* Buttons */
+.payment-actions {
+    margin-top: 22px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Medium screens */
+@media (max-width: 1200px) {
+    .payment-form-grid {
+        grid-template-columns: repeat(3, minmax(180px, 1fr));
+    }
+}
+
+/* Tablets */
+@media (max-width: 800px) {
+    .payment-form-grid {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .payment-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group input,
+    .form-group select {
+        min-width: 0;
+    }
+}
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+  <!-- =====================================================
+       SIDEBAR
+       ===================================================== -->
+
+  <aside class="sidebar">
+
+    <!--<div class="brand">
+
+      <div class="brandmark">
+        Z
+      </div>
+
+      <div>
+        <b>ZIMRA</b>
+        <span>Excise</span>
+      </div>
+
+    </div>
+-->
+
+    <div class="brand">
+      <div class="brand-logo-container">
+        <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+        <div class="brand-text">
+          <b>ZIMRA</b>
+          <span>Excise</span>
+        </div>
+      </div>
+    </div>
+
+
+    <nav>
+
+      <a  href="/">
+        <span>⌂</span>
+        Dashboard
+      </a>
+
+      <a class="active" href="/returns">
+        <span>▤</span>
+        Surtax Returns
+      </a>
+
+      <a   href="/taxpayers">
+        <span>𖨆𖨆</span>
+        Taxpayers
+      </a>
+
+      <a href="#verification" disabled>
+        <span>✓</span>
+        Verification Queue
+      </a>
+
+      <a href="#reports" disabled>
+        <span>◫</span>
+        Reports
+      </a>
+
+    </nav>
+
+
+    <div class="side-card">
+
+      <div class="pulse"></div>
+
+      <b>System status</b>
+
+      <small>
+        Verification services online
+      </small>
+
+    </div>
+
+
+    <div class="user">
+
+      <div class="avatar">
+        LD
+      </div>
+
+      <div>
+
+        <b>Revenue Officer</b>
+
+        <small>
+          Excise Department
+        </small>
+
+      </div>
+
+      <span>⋮</span>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+      <div>
+
+                <span class="eyebrow">
+                    EXCISE • SPECIAL SURTAX
+                </span>
+
+        <h1>
+          Return Details
+        </h1>
+
+        <p>
+          View and manage the selected Special Surtax Return.
+        </p>
+
+      </div>
+
+
+      <div class="return-header-actions">
+
+        <button
+                class="ghost"
+                onclick="goBack()">
+
+          ← Back to Returns
+
+        </button>
+
+
+        <button
+                class="primary"
+                onclick="loadReturn()">
+
+          ↻ Refresh
+
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- =================================================
+         RETURN INFORMATION
+         ================================================= -->
+
+    <section class="grid">
+
+
+      <!-- TAXPAYER INFORMATION -->
+
+      <div class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Taxpayer Information
+            </h2>
+
+            <p>
+              Registered taxpayer details
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+          <div class="info-item">
+
+                        <span>
+                            Taxpayer Name
+                        </span>
+
+            <strong id="taxpayerName">
+              Loading...
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            TIN Number
+                        </span>
+
+            <strong id="tinNumber">
+              Loading...
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            ID Number
+                        </span>
+
+            <strong id="idNumber">
+              Loading...
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Phone Number
+                        </span>
+
+            <strong id="phoneNumber">
+              Loading...
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Address
+                        </span>
+
+            <strong id="taxpayerAddress">
+              Loading...
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RETURN INFORMATION -->
+
+      <div class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Return Information
+            </h2>
+
+            <p>
+              General information about this return
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+          <div class="info-item">
+
+                        <span>
+                            Return ID
+                        </span>
+
+            <strong id="returnId">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Return Period
+                        </span>
+
+            <strong id="returnPeriod">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Manufacturer
+                        </span>
+
+            <strong id="manufacturer">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Return Address
+                        </span>
+
+            <strong id="returnAddress">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Status
+                        </span>
+
+            <strong id="returnStatus">
+              -
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Submitted At
+                        </span>
+
+            <strong id="submittedAt">
+              -
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           PRODUCTS
+           ================================================= -->
+
+      <div class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Products
+            </h2>
+
+            <p>
+              Products declared in this return
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table class="product-table">
+
+            <thead>
+
+            <tr>
+
+              <th>
+                Product
+              </th>
+
+              <th>
+                Category
+              </th>
+
+              <th>
+                Opening Stock
+              </th>
+
+              <th>
+                Receipts
+              </th>
+
+              <th>
+                Production
+              </th>
+
+              <th>
+                Total Litres
+              </th>
+
+              <th>
+                Dutiable Disposal
+              </th>
+
+              <th>
+                Exports
+              </th>
+
+              <th>
+                Destruction
+              </th>
+
+              <th>
+                Closing Stock
+              </th>
+
+              <th>
+                Sugar g/L
+              </th>
+
+              <th>
+                Sugar Content
+              </th>
+
+              <th>
+                Rate
+              </th>
+
+              <th>
+                Payable
+              </th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="productsContainer">
+
+            <tr>
+
+              <td
+                      colspan="14"
+                      class="empty-message">
+
+                Loading products...
+
+              </td>
+
+            </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           FINANCIAL SUMMARY
+           ================================================= -->
+
+      <div class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Financial Summary
+            </h2>
+
+            <p>
+              Return payment position
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="financial-grid"
+             style="grid-template-columns:1fr;">
+
+          <div class="financial-item">
+
+                        <span>
+                            Total Payable
+                        </span>
+
+            <strong id="totalPayable">
+              USD 0.00
+            </strong>
+
+          </div>
+
+
+          <div class="financial-item">
+
+                        <span>
+                            Total Paid
+                        </span>
+
+            <strong id="totalPaid">
+              USD 0.00
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           VARIANCE
+           ================================================= -->
+
+      <div class="panel">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Payment Position
+            </h2>
+
+            <p>
+              Consolidated payment variance
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="variance-container" style="text-align: center;">
+
+          <div
+                  id="varianceCircle"
+                  class="variance-circle variance-green">
+
+            <div class="title">
+              VARIANCE
+            </div>
+
+            <div
+                    id="varianceAmount"
+                    class="amount">
+
+              USD 0.00
+
+            </div>
+
+            <div
+                    id="varianceLabel"
+                    class="label">
+
+              Fully Paid
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           PAYMENTS
+           ================================================= -->
+
+      <div class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Payments
+            </h2>
+
+            <p>
+              Payments recorded against this return
+            </p>
+
+          </div>
+
+
+          <button
+                  class="primary"
+                  onclick="showPaymentForm()">
+
+            ＋ Add Payment
+
+          </button>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table class="payment-table">
+
+            <thead>
+
+            <tr>
+
+              <th>
+                Amount
+              </th>
+
+              <th>
+                Currency
+              </th>
+
+              <th>
+                Bill of Entry
+              </th>
+
+              <th>
+                Receipt Number
+              </th>
+
+              <th>
+                Assessment Number
+              </th>
+
+            </tr>
+
+            </thead>
+
+
+            <tbody id="paymentsContainer">
+
+            <tr>
+
+              <td
+                      colspan="5"
+                      class="empty-message">
+
+                No payments recorded.
+
+              </td>
+
+            </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+
+        <!-- =================================================
+             ADD PAYMENT FORM
+             ================================================= -->
+
+        <div
+                id="paymentForm"
+                class="payment-form"
+                style="display:none;">
+
+          <h3>
+            Add Payment
+          </h3>
+
+
+          <div class="payment-form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                Amount
+              </label>
+
+              <input
+                      type="number"
+                      id="paymentAmount"
+                      step="0.0001"
+                      min="0"
+                      placeholder="0.00">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Currency
+              </label>
+
+              <select id="paymentCurrency">
+
+                <option value="USD">
+                  USD
+                </option>
+
+                <option value="ZWG" disabled>
+                  ZWG
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Bill of Entry
+              </label>
+
+              <input
+                      type="text"
+                      id="paymentBillOfEntry"
+                      placeholder="Bill of Entry">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Receipt Number
+              </label>
+
+              <input
+                      type="text"
+                      id="paymentReceiptNumber"
+                      placeholder="Receipt Number">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Assessment Number
+              </label>
+
+              <input
+                      type="text"
+                      id="paymentAssessmentNumber"
+                      placeholder="Assessment Number">
+
+            </div>
+
+          </div>
+
+
+          <div class="payment-actions">
+
+            <button
+                    class="ghost"
+                    onclick="hidePaymentForm()">
+
+              Cancel
+
+            </button>
+
+
+            <button
+                    class="primary"
+                    onclick="addPayment()">
+
+              Save Payment
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           RETURN TOTALS
+           ================================================= -->
+
+      <div class="panel wide">
+
+        <div class="panel-head">
+
+          <div>
+
+            <h2>
+              Return Totals
+            </h2>
+
+            <p>
+              Consolidated quantities and sugar calculation
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+          <div class="info-item">
+
+                        <span>
+                            Opening Stock
+                        </span>
+
+            <strong id="totalOpeningStock">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            External Receipts
+                        </span>
+
+            <strong id="totalExternalReceipts">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Production
+                        </span>
+
+            <strong id="totalProduction">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Total Litres
+                        </span>
+
+            <strong id="totalLitres">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Dutiable Disposal
+                        </span>
+
+            <strong id="totalDutiableDisposal">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Exports
+                        </span>
+
+            <strong id="totalExports">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Destruction
+                        </span>
+
+            <strong id="totalDestruction">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Closing Stock
+                        </span>
+
+            <strong id="totalClosingStock">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Total Disposed
+                        </span>
+
+            <strong id="totalDisposed">
+              0.00
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+                        <span>
+                            Total Sugar Content
+                        </span>
+
+            <strong id="totalSugarContent">
+              0.00
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+
+
+
+
+
+
+<script src="return-view.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1660 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+
+<!--    <meta charset="utf-8">-->
+
+<!--    <meta-->
+<!--            name="viewport"-->
+<!--            content="width=device-width,initial-scale=1"-->
+<!--    >-->
+
+<!--    <title>ZIMRA • New Surtax Return</title>-->
+
+<!--    <link-->
+<!--            rel="preconnect"-->
+<!--            href="https://fonts.googleapis.com"-->
+<!--    >-->
+
+<!--    <link-->
+<!--            rel="preconnect"-->
+<!--            href="https://fonts.gstatic.com"-->
+<!--            crossorigin-->
+<!--    >-->
+
+<!--    <link-->
+<!--            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"-->
+<!--            rel="stylesheet"-->
+<!--    >-->
+
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="styles.css"-->
+<!--    >-->
+
+<!--</head>-->
+
+
+<!--<body>-->
+
+<!--<div class="app">-->
+
+<!--    &lt;!&ndash; SIDEBAR &ndash;&gt;-->
+
+<!--    <aside class="sidebar">-->
+
+<!--        <div class="brand">-->
+
+<!--            <div class="brandmark">-->
+<!--                Z-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <b>ZIMRA</b>-->
+<!--                <span>Excise</span>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+
+<!--        <nav>-->
+
+<!--            <a href="/">-->
+<!--                <span>⌂</span>-->
+<!--                Dashboard-->
+<!--            </a>-->
+
+<!--            <a class="active" href="new-return.html">-->
+<!--                <span>▤</span>-->
+<!--                Surtax Returns-->
+<!--            </a>-->
+
+<!--            <a href="index.html#verification">-->
+<!--                <span>✓</span>-->
+<!--                Verification Queue-->
+<!--            </a>-->
+
+<!--            <a href="index.html#reports">-->
+<!--                <span>◫</span>-->
+<!--                Reports-->
+<!--            </a>-->
+
+<!--        </nav>-->
+
+
+<!--        <div class="side-card">-->
+
+<!--            <div class="pulse"></div>-->
+
+<!--            <b>System status</b>-->
+
+<!--            <small>-->
+<!--                Verification services online-->
+<!--            </small>-->
+
+<!--        </div>-->
+
+
+<!--        <div class="user">-->
+
+<!--            <div class="avatar">-->
+<!--                LD-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <b>Revenue Officer</b>-->
+<!--                <small>Excise Department</small>-->
+<!--            </div>-->
+
+<!--            <span>⋮</span>-->
+
+<!--        </div>-->
+
+<!--    </aside>-->
+
+
+<!--    &lt;!&ndash; MAIN CONTENT &ndash;&gt;-->
+
+<!--    <main>-->
+
+<!--        <header>-->
+
+<!--            <div>-->
+
+<!--                <span class="eyebrow">-->
+<!--                    EXCISE • SPECIAL SURTAX-->
+<!--                </span>-->
+
+<!--                <h1>-->
+<!--                    New Surtax Return-->
+<!--                </h1>-->
+
+<!--                <p>-->
+<!--                    Capture and submit a Special Surtax Return.-->
+<!--                </p>-->
+
+<!--            </div>-->
+
+
+<!--            <a-->
+<!--                    href="/"-->
+<!--                    class="ghost back-button"-->
+<!--            >-->
+<!--                ← Back to Dashboard-->
+<!--            </a>-->
+
+<!--        </header>-->
+
+
+<!--        &lt;!&ndash; FORM PANEL &ndash;&gt;-->
+
+<!--        <section class="form-page">-->
+
+<!--            <div class="panel form-panel">-->
+
+<!--                <div class="panel-head">-->
+
+<!--                    <div>-->
+
+<!--                        <h2>-->
+<!--                            Return Information-->
+<!--                        </h2>-->
+
+<!--                        <p>-->
+<!--                            Enter the taxpayer and return details below.-->
+<!--                        </p>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+
+<!--                <form id="returnForm">-->
+
+
+
+
+<!--                    <div class="form-section">-->
+
+<!--                        <div class="section-title">-->
+
+<!--                            <span>01</span>-->
+
+<!--                            <div>-->
+<!--                                <h3>Taxpayer Information</h3>-->
+
+<!--                                <p>-->
+<!--                                    Select a taxpayer or search for the registered taxpayer using TIN.-->
+<!--                                </p>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+
+<!--                        &lt;!&ndash; TAXPAYER DROPDOWN &ndash;&gt;-->
+
+<!--                        <div class="two">-->
+
+<!--                            <label>-->
+
+<!--                                Taxpayer Name-->
+
+<!--                                <select id="taxpayerSelect">-->
+
+<!--                                    <option value="">-->
+<!--                                        &#45;&#45; Select Taxpayer &#45;&#45;-->
+<!--                                    </option>-->
+
+<!--                                </select>-->
+
+<!--                            </label>-->
+
+
+<!--                            &lt;!&ndash; TIN SEARCH &ndash;&gt;-->
+
+<!--                            <label>-->
+
+<!--                                Taxpayer TIN-->
+
+<!--                                <div class="tin-search">-->
+
+<!--                                    <input-->
+<!--                                            type="number"-->
+<!--                                            id="tinNumber"-->
+<!--                                            placeholder="Enter TIN number"-->
+<!--                                            required-->
+<!--                                    >-->
+
+<!--                                    <button-->
+<!--                                            type="button"-->
+<!--                                            class="ghost"-->
+<!--                                            onclick="findTaxpayer()"-->
+<!--                                    >-->
+<!--                                        Search-->
+<!--                                    </button>-->
+
+<!--                                </div>-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+
+<!--                        &lt;!&ndash; TAXPAYER DETAILS &ndash;&gt;-->
+
+<!--                        <div class="two">-->
+
+<!--                            <label>-->
+
+<!--                                Taxpayer Name-->
+
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        id="taxpayerName"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Taxpayer name"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                Address-->
+
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        id="taxpayerAddress"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Taxpayer address"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="two">-->
+
+<!--                            <label>-->
+
+<!--                                Phone Number-->
+
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        id="taxpayerPhone"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Phone number"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                ID Number-->
+
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        id="taxpayerIdNumber"-->
+<!--                                        readonly-->
+<!--                                        placeholder="ID number"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div id="taxpayerMessage"></div>-->
+
+<!--                    </div>-->
+
+
+<!--                    &lt;!&ndash; =========================-->
+<!--                         RETURN DETAILS-->
+<!--                    ========================== &ndash;&gt;-->
+
+<!--                    <div class="form-section">-->
+
+<!--                        <div class="section-title">-->
+
+<!--                            <span>02</span>-->
+
+<!--                            <div>-->
+
+<!--                                <h3>Return Details</h3>-->
+
+<!--                                <p>-->
+<!--                                    General information about the return.-->
+<!--                                </p>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="two">-->
+
+<!--                            <label>-->
+
+<!--                                Return Period-->
+
+<!--                                <input-->
+<!--                                        type="month"-->
+<!--                                        id="returnPeriod"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                Product Name-->
+
+<!--                                <input-->
+<!--                                        type="text"-->
+<!--                                        id="productName"-->
+<!--                                        placeholder="e.g. Sugar"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+
+<!--                    &lt;!&ndash; =========================-->
+<!--                         STOCK-->
+<!--                    ========================== &ndash;&gt;-->
+
+<!--                    <div class="form-section">-->
+
+<!--                        <div class="section-title">-->
+
+<!--                            <span>03</span>-->
+
+<!--                            <div>-->
+<!--                                <h3>Stock Movement</h3>-->
+
+<!--                                <p>-->
+<!--                                    Enter quantities reported for the return period.-->
+<!--                                    Calculated fields are completed automatically.-->
+<!--                                </p>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="three">-->
+
+<!--                            <label>-->
+
+<!--                                Opening Stock On Hand-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="openingStockOnHand"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                External Receipts-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="externalReceipts"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                Production-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="production"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="two">-->
+
+<!--                            <label>-->
+
+<!--                                Total Litres-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        id="totalLitres"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Automatically calculated"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+
+<!--                    &lt;!&ndash; =========================-->
+<!--                         DISPOSALS-->
+<!--                    ========================== &ndash;&gt;-->
+
+<!--                    <div class="form-section">-->
+
+<!--                        <div class="section-title">-->
+
+<!--                            <span>04</span>-->
+
+<!--                            <div>-->
+
+<!--                                <h3>Disposals & Adjustments</h3>-->
+
+<!--                                <p>-->
+<!--                                    Capture all disposals and adjustments.-->
+<!--                                    Totals are calculated automatically.-->
+<!--                                </p>-->
+
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="three">-->
+
+<!--                            <label>-->
+
+<!--                                Dutiable Disposal-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="dutiableDisposal"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                Exports-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="exports"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                            <label>-->
+
+<!--                                Destruction-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        min="0"-->
+<!--                                        id="destruction"-->
+<!--                                        placeholder="0.0000"-->
+<!--                                        required-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                        </div>-->
+
+
+<!--                        <div class="two">-->
+<!--                            <label>-->
+
+<!--                                Closing Stock-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        id="closingStock"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Automatically calculated"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+<!--                            <label>-->
+
+<!--                                Total Disposed-->
+
+<!--                                <input-->
+<!--                                        type="number"-->
+<!--                                        step="0.01"-->
+<!--                                        id="totalDisposed"-->
+<!--                                        readonly-->
+<!--                                        placeholder="Automatically calculated"-->
+<!--                                >-->
+
+<!--                            </label>-->
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; =========================-->
+<!--                         SUGAR / SURTAX-->
+<!--                    ========================== &ndash;&gt;-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>New Surtax Return - ZIMRA</title>
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-light app">
+<div class="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+
+
+    <div class="brand">
+        <div class="brand-logo-container">
+            <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+            <div class="brand-text">
+                <b>ZIMRA</b>
+                <span>Excise</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <nav>
+
+        <a  href="/">
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+        <a class="active" href="/returns">
+            <span>▤</span>
+            Surtax Returns
+        </a>
+
+        <a href="/taxpayers">
+            <span>𖨆𖨆</span>
+            Taxpayers
+        </a>
+
+        <a href="#verification" disabled>
+            <span>✓</span>
+            Verification Queue
+        </a>
+
+        <a href="#reports" disabled>
+            <span>◫</span>
+            Reports
+        </a>
+
+    </nav>
+
+
+
+    <div class="side-card">
+        <div class="pulse"></div>
+        <b>System status</b>
+        <small>Verification services online</small>
+    </div>
+
+    <div class="user">
+        <div class="avatar">LD</div>
+
+        <div>
+            <b>Revenue Officer</b>
+            <small>Excise Department</small>
+        </div>
+
+        <span>⋮</span>
+    </div>
+
+</aside>
+
+
+<main>
+
+
+<div class="container-fluid py-4">
+
+    <!-- HEADER -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h3 class="fw-bold mb-1">
+                <i class="bi bi-file-earmark-text"></i>
+                New Surtax Return
+            </h3>
+
+            <p class="text-muted mb-0">
+                Special Surtax on Sugar Beverages Return
+            </p>
+        </div>
+
+        <a href="/returns"
+           class="btn btn-outline-secondary">
+
+            <i class="bi bi-arrow-left"></i>
+            Back
+        </a>
+
+    </div>
+
+
+    <form id="returnForm">
+
+        <!-- TAXPAYER INFORMATION -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-primary text-white">
+
+                <h5 class="mb-0">
+                    <i class="bi bi-building"></i>
+                    Taxpayer Information
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Taxpayer
+                        </label>
+
+                        <select
+                                class="form-select"
+                                id="taxpayerSelect"
+                                required>
+
+                            <option value="">
+                                Select taxpayer
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            TIN Number
+                        </label>
+
+                        <div class="input-group">
+
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    id="tinNumber"
+                                    placeholder="Enter TIN">
+
+                            <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    onclick="findTaxpayer()">
+
+                                <i class="bi bi-search"></i>
+                                Search
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Manufacturer / Taxpayer Name
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="taxpayerName"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Address
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="taxpayerAddress"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Phone
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="taxpayerPhone"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Return Month
+                        </label>
+
+                        <select
+                                class="form-select"
+                                id="returnMonth"
+                                required>
+
+                            <option value="">Select month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Return Year
+                        </label>
+
+                        <input
+                                type="number"
+                                class="form-control"
+                                id="returnYear"
+                                min="2000"
+                                max="2100"
+                                required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-dark text-white
+                        d-flex justify-content-between align-items-center">
+
+                <h5 class="mb-0">
+
+                    <i class="bi bi-box-seam"></i>
+                    Products
+
+                </h5>
+
+                <button
+                        type="button"
+                        class="btn btn-light btn-sm"
+                        onclick="addProduct()">
+
+                    <i class="bi bi-plus-circle"></i>
+                    Add Product
+
+                </button>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <div id="productsContainer"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RETURN TOTALS -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-success text-white">
+
+                <h5 class="mb-0">
+                    <i class="bi bi-calculator"></i>
+                    Return Totals
+                </h5>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Opening Stock
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalOpening"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total External Receipts
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalReceipts"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Production
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalProduction"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Litres
+                        </label>
+
+                        <input
+                                class="form-control fw-bold"
+                                id="returnTotalLitres"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Dutiable Disposal
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalDutiable"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Exports
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalExports"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Destruction
+                        </label>
+
+                        <input
+                                class="form-control"
+                                id="returnTotalDestruction"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Total Closing Stock
+                        </label>
+
+                        <input
+                                class="form-control fw-bold"
+                                id="returnTotalClosing"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Total Disposed
+                        </label>
+
+                        <input
+                                class="form-control fw-bold"
+                                id="returnTotalDisposed"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Total Sugar Content (g)
+                        </label>
+
+                        <input
+                                class="form-control fw-bold"
+                                id="returnTotalSugar"
+                                readonly>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Total Surtax Payable (USD)
+                        </label>
+
+                        <input
+                                class="form-control fw-bold"
+                                id="returnTotalPayable"
+                                readonly>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <!--<div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    Payment Information
+                </h5>
+                <p class="mb-0">
+                    What has been paid by the Taxpayer?
+                </p>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Currency
+                        </label>
+
+                        <select
+                                class="form-select"
+                                id="currencySelect">
+
+                            <option value="USD">
+                                USD
+                            </option>
+
+                            <option value="ZWG" disabled>
+                                ZWG
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Amount Paid
+                        </label>
+
+                        <input
+                                type="number"
+                                step="0.01"
+                                class="form-control"
+                                id="amountPaid"
+                                value="0">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+-->
+
+        <!-- PAYMENT INFORMATION -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-dark text-white">
+                <i class="bi bi-credit-card me-2"></i>
+                Payment Information
+            </div>
+
+            <div class="card-body">
+
+                <div id="paymentsContainer"></div>
+
+                <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        onclick="addPayment()">
+
+                    <i class="bi bi-plus-circle me-1"></i>
+                    Add Payment
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VARIANCE -->
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body text-center">
+
+                <div
+                        id="varianceCircle"
+                        class="mx-auto rounded-circle d-flex flex-column justify-content-center align-items-center"
+                        style="
+                    width: 180px;
+                    height: 180px;
+                    background-color: #198754;
+                    color: white;
+                ">
+
+                    <div class="fw-bold fs-6">
+                        VARIANCE
+                    </div>
+
+                    <div
+                            id="varianceAmount"
+                            class="fw-bold fs-3">
+
+                        0.00
+
+                    </div>
+
+                    <small id="varianceLabel">
+                        Fully Paid
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SUBMIT -->
+
+        <div class="d-flex justify-content-end gap-2">
+
+            <a
+                    href="index.html"
+                    class="btn btn-outline-secondary">
+
+                Cancel
+
+            </a>
+
+            <button
+                    type="submit"
+                    class="btn btn-primary px-4">
+
+                <i class="bi bi-send"></i>
+                Submit Surtax Return
+
+            </button>
+
+        </div>
+
+
+
+
+<!--        Payments template-->
+
+        <template id="paymentTemplate">
+
+            <div class="payment-row border rounded p-3 mb-3">
+
+                <div class="d-flex justify-content-between mb-3">
+
+                    <h6 class="mb-0">
+                        <i class="bi bi-receipt me-1"></i>
+                        Payment
+                        <span class="payment-number"></span>
+                    </h6>
+
+                    <button
+                            type="button"
+                            class="btn btn-sm btn-outline-danger"
+                            onclick="removePayment(this)">
+
+                        <i class="bi bi-trash"></i>
+
+                    </button>
+
+                </div>
+
+                <div class="row g-3">
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Amount
+                        </label>
+
+                        <input
+                                type="number"
+                                class="form-control payment-amount"
+                                step="0.01"
+                                min="0"
+                                oninput="calculateVariance()">
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <label class="form-label">
+                            Currency
+                        </label>
+
+                        <select class="form-select payment-currency">
+
+                            <option value="USD">USD</option>
+                            <option value="ZWG" disabled>ZWG</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <label class="form-label">
+                            Bill of Entry
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control payment-bill-of-entry">
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <label class="form-label">
+                            Receipt Number
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control payment-receipt">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Assessment Number
+                        </label>
+
+                        <input
+                                type="text"
+                                class="form-control payment-assessment">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </template>
+
+
+
+    </form>
+
+</div>
+
+<!-- PRODUCT TEMPLATE -->
+
+<template id="productTemplate">
+
+    <div class="card border mb-4 product-card">
+
+        <div class="card-header
+                    d-flex justify-content-between align-items-center">
+
+            <strong class="product-number">
+                Product
+            </strong>
+
+            <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    onclick="removeProduct(this)">
+
+                <i class="bi bi-trash"></i>
+                Remove
+
+            </button>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row g-3">
+
+                <!-- PRODUCT DETAILS -->
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Product / Brand Name
+                    </label>
+
+                    <input
+                            type="text"
+                            class="form-control product-name"
+                            required>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Product Category
+                    </label>
+
+                    <select
+                            class="form-select product-category"
+                            required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="CORDIALS">
+                            Cordials
+                        </option>
+
+                        <option value="READY_TO_DRINK">
+                            Ready to drink
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- RECEIPTS -->
+
+                <div class="col-12">
+
+                    <h6 class="border-bottom pb-2 mt-2">
+                        Receipts
+                    </h6>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Opening Stock (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control opening-stock"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        External Receipts (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control external-receipts"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Production (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control production"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Total Litres
+                    </label>
+
+                    <input
+                            class="form-control bg-light total-litres"
+                            readonly>
+
+                </div>
+
+
+                <!-- DISPOSALS -->
+
+                <div class="col-12">
+
+                    <h6 class="border-bottom pb-2 mt-2">
+                        Removals / Disposals
+                    </h6>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Dutiable Disposal (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control dutiable-disposal"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Exports (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control exports"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Destruction (Litres)
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control destruction"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Closing Stock (Litres)
+                    </label>
+
+                    <input
+                            class="form-control bg-light closing-stock"
+                            readonly>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Total Disposed (Litres)
+                    </label>
+
+                    <input
+                            class="form-control bg-light total-disposed"
+                            readonly>
+
+                </div>
+
+
+                <!-- SURTAX -->
+
+                <div class="col-12">
+
+                    <h6 class="border-bottom pb-2 mt-2">
+                        Special Surtax Calculation
+                    </h6>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Declared Grams/Litre
+                    </label>
+
+                    <input
+                            type="number"
+                            step="0.01"
+                            class="form-control declared-grams"
+                            value="0">
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Total Sugar Content (Grams)
+                    </label>
+
+                    <input
+                            class="form-control bg-light total-sugar"
+                            readonly>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Surtax Rate
+                    </label>
+
+                    <input
+                            class="form-control bg-light surtax-rate"
+                            readonly>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <label class="form-label">
+                        Total Surtax Payable (USD)
+                    </label>
+
+                    <input
+                            class="form-control bg-light fw-bold total-payable"
+                            readonly>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>
+
+</main>
+</div>
+
+
+<!-- Bootstrap JS -->
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="new-return.js"></script>
+
+</body>
+</html>

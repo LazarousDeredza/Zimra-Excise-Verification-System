@@ -1,0 +1,849 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>ZIMRA • Surtax Verification Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+
+
+
+        <div class="brand">
+            <div class="brand-logo-container">
+                <img src="zimra.jpg" alt="ZIMRA Logo" class="brand-logo">
+
+                <div class="brand-text">
+                    <b>ZIMRA</b>
+                    <span>Excise</span>
+                </div>
+            </div>
+        </div>
+
+        <nav>
+
+            <a class="active" href="/">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/returns">
+                <span>▤</span>
+                Surtax Returns
+            </a>
+
+            <a href="/taxpayers">
+                <span>𖨆𖨆</span>
+                Taxpayers
+            </a>
+
+            <a href="#verification" disabled>
+                <span>✓</span>
+                Verification Queue
+            </a>
+
+            <a href="#reports" disabled>
+                <span>◫</span>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="side-card">
+
+            <div class="pulse"></div>
+
+            <b>System status</b>
+
+            <small>
+                Verification services online
+            </small>
+
+        </div>
+
+
+        <div class="user">
+
+            <div class="avatar">
+                LD
+            </div>
+
+            <div>
+                <b>Revenue Officer</b>
+                <small>Excise Department</small>
+            </div>
+
+            <span>⋮</span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div>
+
+            <span class="eyebrow">
+                EXCISE • SPECIAL SURTAX
+            </span>
+
+                <h1>
+                    Excise Department Dashboard
+                </h1>
+
+                <p>
+                    Monitor surtax returns, collections,
+                    payments and verification variances.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+            <span
+                    class="last-updated"
+                    id="lastUpdated">
+                Loading...
+            </span>
+
+                <button
+                        class="ghost"
+                        onclick="loadDashboard()">
+
+                    ↻ Refresh
+
+                </button>
+
+                <button
+                        class="primary"
+                        onclick="window.location.href='/new_return'">
+
+                    ＋ New Surtax Return
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             MAIN KPI CARDS
+        ========================================== -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+            <span>
+                Number of Returns
+            </span>
+
+                <strong id="totalReturns">
+                    0
+                </strong>
+
+                <em>
+                    All submitted returns
+                </em>
+
+            </div>
+
+
+            <div class="stat blue">
+
+            <span>
+                Registered Taxpayers
+            </span>
+
+                <strong id="totalTaxpayers">
+                    0
+                </strong>
+
+                <em>
+                    Registered taxpayers
+                </em>
+
+            </div>
+
+
+            <div class="stat success">
+
+            <span>
+                Total Amounts Paid
+            </span>
+
+                <strong id="totalAmountPaid">
+                    0.00
+                </strong>
+
+                <em>
+                    Recorded payments
+                </em>
+
+            </div>
+
+
+            <div class="stat danger">
+
+            <span>
+                Negative Variances
+            </span>
+
+                <strong id="negativeVariance">
+                    0.00
+                </strong>
+
+                <em>
+                    Amount below expected
+                </em>
+
+            </div>
+
+
+            <div class="stat warn">
+
+            <span>
+                Positive Variances
+            </span>
+
+                <strong id="positiveVariance">
+                    0.00
+                </strong>
+
+                <em>
+                    Amount above expected
+                </em>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             SECONDARY KPI CARDS
+        ========================================== -->
+
+        <section class="mini-stats">
+
+            <div class="mini-stat">
+
+                <div class="mini-icon success-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                <span>
+                    Verified
+                </span>
+
+                    <strong id="verified">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="mini-stat">
+
+                <div class="mini-icon warning-icon">
+                    !
+                </div>
+
+                <div>
+
+                <span>
+                    Flagged
+                </span>
+
+                    <strong id="flagged">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="mini-stat">
+
+                <div class="mini-icon pending-icon">
+                    ◷
+                </div>
+
+                <div>
+
+                <span>
+                    Pending
+                </span>
+
+                    <strong id="pending">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="mini-stat">
+
+                <div class="mini-icon payable-icon">
+                    $
+                </div>
+
+                <div>
+
+                <span>
+                    Total Payable
+                </span>
+
+                    <strong id="totalPayable">
+                        0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             COLLECTION TREND
+        ========================================== -->
+
+        <section class="dashboard-grid">
+
+            <div class="panel chart-panel large-chart">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Annual Surtax Collections
+                        </h2>
+
+                        <p>
+                            Total amounts paid by return year
+                        </p>
+
+                    </div>
+
+                    <span class="chart-badge">
+                    Collections
+                </span>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="collectionsChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="panel chart-panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Return Status
+                        </h2>
+
+                        <p>
+                            Verification status
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container doughnut-container">
+
+                    <canvas id="statusChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             MONTHLY + VARIANCE
+        ========================================== -->
+
+        <section class="dashboard-grid">
+
+            <div class="panel chart-panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Monthly Collections
+                        </h2>
+
+                        <p>
+                            Amounts paid by return month
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="monthlyCollectionsChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel chart-panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Variance Analysis
+                        </h2>
+
+                        <p>
+                            Positive and negative variance
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="varianceChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PRODUCT ANALYTICS
+        ========================================== -->
+
+        <section class="dashboard-grid">
+
+            <div class="panel chart-panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Returns by Product Category
+                        </h2>
+
+                        <p>
+                            Product category distribution
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container doughnut-container">
+
+                    <canvas id="productChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel chart-panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Returns by Year
+                        </h2>
+
+                        <p>
+                            Number of returns submitted
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="returnsYearChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             REVENUE SUMMARY
+        ========================================== -->
+
+        <section class="grid">
+
+            <div class="panel wide">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Revenue Summary
+                        </h2>
+
+                        <p>
+                            Key Excise indicators
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="revenue-summary">
+
+                    <div class="revenue-item">
+
+                    <span>
+                        Total Payable
+                    </span>
+
+                        <strong id="summaryPayable">
+                            0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="revenue-item">
+
+                    <span>
+                        Total Paid
+                    </span>
+
+                        <strong id="summaryPaid">
+                            0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="revenue-item positive">
+
+                    <span>
+                        Positive Variance
+                    </span>
+
+                        <strong id="summaryPositive">
+                            0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="revenue-item negative">
+
+                    <span>
+                        Negative Variance
+                    </span>
+
+                        <strong id="summaryNegative">
+                            0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="revenue-item">
+
+                    <span>
+                        Total Litres
+                    </span>
+
+                        <strong id="summaryLitres">
+                            0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             VERIFICATION FLOW
+        ========================================== -->
+
+        <section class="grid" style="margin-top: 20px;">
+
+            <div class="panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Verification Flow
+                        </h2>
+
+                        <p>
+                            Automated control checks
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flow">
+
+                    <div>
+
+                        <i>01</i>
+
+                        <div>
+
+                            <b>
+                                Capture
+                            </b>
+
+                            <small>
+                                Return submitted to system
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i>02</i>
+
+                        <div>
+
+                            <b>
+                                Validate
+                            </b>
+
+                            <small>
+                                Rules and arithmetic checks
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i>03</i>
+
+                        <div>
+
+                            <b>
+                                Compare
+                            </b>
+
+                            <small>
+                                Variance is calculated
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i>04</i>
+
+                        <div>
+
+                            <b>
+                                Review
+                            </b>
+
+                            <small>
+                                Flagged cases routed to officer
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROL CENTRE -->
+
+            <div class="panel">
+
+                <div class="panel-head">
+
+                    <div>
+
+                        <h2>
+                            Control Centre
+                        </h2>
+
+                        <p>
+                            Excise indicators
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="controls">
+
+                    <div>
+
+                    <span class="control-icon">
+                        ✓
+                    </span>
+
+                        <b>
+                            Arithmetic consistency
+                        </b>
+
+                        <small>
+                            Quantity and surtax calculations
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                    <span class="control-icon">
+                        ⌁
+                    </span>
+
+                        <b>
+                            Variance detection
+                        </b>
+
+                        <small>
+                            Identifies payment differences
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                    <span class="control-icon">
+                        ◈
+                    </span>
+
+                        <b>
+                            Audit-ready results
+                        </b>
+
+                        <small>
+                            Verification findings are stored
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
