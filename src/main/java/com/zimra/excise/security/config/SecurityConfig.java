@@ -124,6 +124,7 @@ public class SecurityConfig {
                                 "/register",
                                 "/css/**",
                                 "/js/**",
+                                "/zimra.jpg",
                                 "/images/**"
                         )
                         .permitAll()

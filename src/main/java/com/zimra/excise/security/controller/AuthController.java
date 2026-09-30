@@ -64,7 +64,7 @@ public class AuthController {
 
         if (userRepository.existsByEmail(email)) {
 
-            return "redirect:/signup.html?error=exists";
+            return "redirect:/signup?error=exists";
 
         }
 

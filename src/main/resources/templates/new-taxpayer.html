@@ -34,19 +34,7 @@
 
     <aside class="sidebar">
 
-        <!--<div class="brand">
 
-            <div class="brandmark">
-                Z
-            </div>
-
-            <div>
-                <b>ZIMRA</b>
-                <span>Excise</span>
-            </div>
-
-        </div>
--->
 
         <div class="brand">
             <div class="brand-logo-container">
@@ -105,16 +93,44 @@
 
         <div class="user">
 
-            <div class="avatar">
-                LD
+            <div class="avatar" id="userAvatar">
+                --
             </div>
 
-            <div>
-                <b>Revenue Officer</b>
-                <small>Excise Department</small>
+            <div class="user-info">
+                <b id="userRole">Revenue Officer</b>
+                <small id="userName">Loading...</small>
             </div>
 
-            <span>⋮</span>
+            <div class="user-menu">
+
+                <button
+                        type="button"
+                        class="user-menu-button"
+                        onclick="toggleUserMenu()">
+
+                    ⋮
+
+                </button>
+
+                <div
+                        id="userMenu"
+                        class="user-dropdown">
+
+                    <form method="POST" action="/logout">
+
+                        <button type="submit" class="logout-button">
+
+                            <span>⇥</span>
+                            Logout
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -353,6 +369,7 @@
 
 
 <script src="new-taxpayer.js"></script>
+<script src="security.js"></script>
 
 </body>
 

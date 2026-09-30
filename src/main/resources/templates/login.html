@@ -1,5 +1,12 @@
+
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -8,171 +15,581 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>Login</title>
+  <title>ZIMRA | Login</title>
+
 
   <style>
 
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f6f8;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
-
-    .login-container {
-        width: 400px;
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    input {
-        width: 100%;
-        padding: 12px;
+    * {
         box-sizing: border-box;
     }
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #0d6efd;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
+
+    body {
+
+        margin: 0;
+
+        font-family: Arial, sans-serif;
+
+        min-height: 100vh;
+
+        background: #f4f6f8;
+
     }
+
+
+    /* =========================================
+       MAIN SPLIT SCREEN
+    ========================================== */
+
+    .login-page {
+
+        min-height: 100vh;
+
+        display: flex;
+
+    }
+
+
+    /* =========================================
+       LEFT SIDE
+    ========================================== */
+
+    .logo-section {
+
+        width: 50%;
+
+        min-height: 100vh;
+
+        background: #ffffff;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+    }
+
+
+    .logo-content {
+
+        text-align: center;
+
+        width: 80%;
+
+    }
+
+
+    .logo-content img {
+
+        width: 70%;
+
+        max-width: 500px;
+
+        height: auto;
+
+        object-fit: contain;
+
+    }
+
+
+    .logo-content h1 {
+
+        margin-top: 25px;
+
+        margin-bottom: 10px;
+
+        font-size: 30px;
+
+        color: #1d3557;
+
+    }
+
+
+    .logo-content p {
+
+        color: #6c757d;
+
+        font-size: 15px;
+
+    }
+
+
+    /* =========================================
+       RIGHT SIDE
+    ========================================== */
+
+    .form-section {
+
+        width: 50%;
+
+        min-height: 100vh;
+
+        background: #f4f6f8;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 40px;
+
+    }
+
+
+    /* =========================================
+       LOGIN CARD
+    ========================================== */
+
+    .login-container {
+
+        width: 100%;
+
+        max-width: 430px;
+
+        background: white;
+
+        padding: 40px;
+
+        border-radius: 12px;
+
+        box-shadow:
+            0 10px 35px rgba(0, 0, 0, 0.08);
+
+    }
+
+
+    .login-header {
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .login-header h2 {
+
+        margin: 0 0 8px;
+
+        font-size: 30px;
+
+        color: #212529;
+
+    }
+
+
+    .login-header p {
+
+        margin: 0;
+
+        color: #6c757d;
+
+        font-size: 14px;
+
+    }
+
+
+    /* =========================================
+       FORM
+    ========================================== */
+
+    .form-group {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    label {
+
+        display: block;
+
+        margin-bottom: 8px;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        color: #343a40;
+
+    }
+
+
+    input {
+
+        width: 100%;
+
+        padding: 13px 14px;
+
+        border: 1px solid #ced4da;
+
+        border-radius: 7px;
+
+        font-size: 14px;
+
+        outline: none;
+
+        transition: 0.2s;
+
+    }
+
+
+    input:focus {
+
+        border-color: #0d6efd;
+
+        box-shadow:
+            0 0 0 3px rgba(13, 110, 253, 0.1);
+
+    }
+
+
+    /* =========================================
+       LOGIN BUTTON
+    ========================================== */
+
+    button {
+
+        width: 100%;
+
+        padding: 13px;
+
+        background: #0d6efd;
+
+        color: white;
+
+        border: none;
+
+        cursor: pointer;
+
+        border-radius: 7px;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        transition: 0.2s;
+
+    }
+
+
+    button:hover {
+
+        background: #0b5ed7;
+
+    }
+
+
+    /* =========================================
+       MESSAGES
+    ========================================== */
 
     .message {
-        padding: 10px;
-        margin-bottom: 15px;
+
+        padding: 12px;
+
+        margin-bottom: 20px;
+
         text-align: center;
+
+        border-radius: 6px;
+
+        font-size: 14px;
+
     }
+
 
     .error {
+
         background: #f8d7da;
+
         color: #842029;
+
     }
+
 
     .success {
+
         background: #d1e7dd;
+
         color: #0f5132;
+
     }
 
+
+    /* =========================================
+       SIGN UP
+    ========================================== */
+
     .signup {
+
         text-align: center;
-        margin-top: 20px;
+
+        margin-top: 25px;
+
+        color: #6c757d;
+
+        font-size: 14px;
+
+    }
+
+
+    .signup a {
+
+        color: #0d6efd;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+    }
+
+
+    .signup a:hover {
+
+        text-decoration: underline;
+
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================== */
+
+    @media (max-width: 768px) {
+
+        .login-page {
+
+            flex-direction: column;
+
+        }
+
+
+        .logo-section {
+
+            width: 100%;
+
+            min-height: 35vh;
+
+        }
+
+
+        .logo-content img {
+
+            width: 45%;
+
+            max-width: 250px;
+
+        }
+
+
+        .logo-content h1 {
+
+            font-size: 22px;
+
+            margin-top: 10px;
+
+        }
+
+
+        .logo-content p {
+
+            display: none;
+
+        }
+
+
+        .form-section {
+
+            width: 100%;
+
+            min-height: 65vh;
+
+            padding: 25px;
+
+        }
+
+
+        .login-container {
+
+            padding: 30px 25px;
+
+        }
+
     }
 
   </style>
 
 </head>
 
+
 <body>
 
-<div class="login-container">
 
-  <h2>Login</h2>
-
-
-  <!-- Login error -->
-
-  <div
-          th:if="${param.error}"
-          class="message error">
-
-    Invalid email or password.
-
-  </div>
+<div class="login-page">
 
 
-  <!-- Registration success -->
+  <!-- =========================================
+       LEFT: ZIMRA LOGO
+  ========================================== -->
 
-  <div
-          th:if="${param.registered}"
-          class="message success">
+  <section class="logo-section">
 
-    Registration successful.
-    You can now login.
+    <div class="logo-content">
 
-  </div>
-
-
-  <!-- Logout -->
-
-  <div
-          th:if="${param.logout}"
-          class="message success">
-
-    You have been logged out.
-
-  </div>
+      <img
+              src="zimra.jpg"
+              alt="ZIMRA Logo">
 
 
-  <form method="POST" action="/login">
+      <h1>
+        Zimbabwe Revenue Authority
+      </h1>
 
-    <div class="form-group">
 
-      <label>Email</label>
+      <p>
+        Excise • Special Surtax Verification System
+      </p>
 
-      <input
-              type="email"
-              name="username"
-              placeholder="Enter email"
-              required>
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       RIGHT: LOGIN
+  ========================================== -->
+
+  <section class="form-section">
+
+
+    <div class="login-container">
+
+
+      <div class="login-header">
+
+        <h2>
+          Welcome Back
+        </h2>
+
+        <p>
+          Sign in to access the Surtax Verification System.
+        </p>
+
+      </div>
+
+
+      <!-- LOGIN ERROR -->
+
+      <div
+              th:if="${param.error}"
+              class="message error">
+
+        Invalid email or password.
+
+      </div>
+
+
+      <!-- REGISTRATION SUCCESS -->
+
+      <div
+              th:if="${param.registered}"
+              class="message success">
+
+        Registration successful.
+        You can now login.
+
+      </div>
+
+
+      <!-- LOGOUT -->
+
+      <div
+              th:if="${param.logout}"
+              class="message success">
+
+        You have been logged out successfully.
+
+      </div>
+
+
+      <!-- LOGIN FORM -->
+
+      <form
+              method="POST"
+              action="/login">
+
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+                  type="email"
+                  id="email"
+                  name="username"
+                  placeholder="Enter your email"
+                  autocomplete="email"
+                  required>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required>
+
+        </div>
+
+
+        <button type="submit">
+
+          Login
+
+        </button>
+
+
+      </form>
+
+
+      <div class="signup">
+
+        Don't have an account?
+
+        <a href="/signup">
+
+          Create account
+
+        </a>
+
+      </div>
+
 
     </div>
 
 
-    <div class="form-group">
+  </section>
 
-      <label>Password</label>
-
-      <input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              required>
-
-    </div>
-
-
-    <button type="submit">
-
-      Login
-
-    </button>
-
-  </form>
-
-
-  <div class="signup">
-
-    Don't have an account?
-
-    <a href="/signup">
-      Create account
-    </a>
-
-  </div>
 
 </div>
+
 
 </body>
 

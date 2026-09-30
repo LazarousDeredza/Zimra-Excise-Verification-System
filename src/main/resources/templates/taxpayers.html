@@ -70,14 +70,46 @@
     </div>
 
     <div class="user">
-      <div class="avatar">LD</div>
 
-      <div>
-        <b>Revenue Officer</b>
-        <small>Excise Department</small>
+      <div class="avatar" id="userAvatar">
+        --
       </div>
 
-      <span>⋮</span>
+      <div class="user-info">
+        <b id="userRole">Revenue Officer</b>
+        <small id="userName">Loading...</small>
+      </div>
+
+      <div class="user-menu">
+
+        <button
+                type="button"
+                class="user-menu-button"
+                onclick="toggleUserMenu()">
+
+          ⋮
+
+        </button>
+
+        <div
+                id="userMenu"
+                class="user-dropdown">
+
+          <form method="POST" action="/logout">
+
+            <button type="submit" class="logout-button">
+
+              <span>⇥</span>
+              Logout
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
     </div>
 
   </aside>
@@ -249,6 +281,6 @@
 
 
 <script src="taxpayers.js"></script>
-
+<script src="security.js"></script>
 </body>
 </html>
