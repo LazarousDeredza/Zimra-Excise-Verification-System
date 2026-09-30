@@ -11,6 +11,7 @@ import com.zimra.excise.repository.PaymentRepository;
 import com.zimra.excise.repository.SurtaxReturnRepository;
 import com.zimra.excise.repository.TaxpayerRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -36,7 +37,7 @@ public class SurtaxReturnService {
 
 
     @Transactional
-    public SurtaxReturnResponse create(SurtaxReturnRequest request) {
+    public SurtaxReturnResponse create(SurtaxReturnRequest request, Authentication authentication) {
 
         Taxpayer taxpayer =
                 taxpayerRepository.findById(
@@ -47,6 +48,7 @@ public class SurtaxReturnService {
                         )
                 );
 
+        String createdBy = authentication.getName();
 
 
         // ==========================================
@@ -76,7 +78,7 @@ public class SurtaxReturnService {
                         .address(
                                 request.getAddress()
                         )
-
+                        .createdBy(createdBy)
 
 
                         .build();
@@ -515,6 +517,7 @@ public class SurtaxReturnService {
                 .returnMonth(
                         surtaxReturn.getReturnMonth()
                 )
+                .createdBy(surtaxReturn.getCreatedBy())
 
                 .returnYear(
                         surtaxReturn.getReturnYear()

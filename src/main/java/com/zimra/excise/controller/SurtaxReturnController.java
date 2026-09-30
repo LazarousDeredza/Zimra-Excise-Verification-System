@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import com.zimra.excise.entity.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,10 +31,10 @@ public class SurtaxReturnController {
 
     @PostMapping("/create")
     public ResponseEntity<SurtaxReturnResponse> create(
-            @RequestBody SurtaxReturnRequest request) {
+            @RequestBody SurtaxReturnRequest request, Authentication authentication) {
 
         return ResponseEntity.ok(
-                surtaxReturnService.create(request)
+                surtaxReturnService.create(request,authentication)
         );
 
 

@@ -105,6 +105,9 @@
         @Column(name = "submitted_at")
         private LocalDateTime submittedAt;
 
+        @Column(name = "created_by",nullable = false)
+        private String createdBy;
+
         @PrePersist
         protected void onCreate() {
             if (submittedAt == null) {
