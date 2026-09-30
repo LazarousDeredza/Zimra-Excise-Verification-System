@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Login</title>
+
+  <style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .login-container {
+        width: 400px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #0d6efd;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .message {
+        padding: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .error {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .success {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .signup {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+  <h2>Login</h2>
+
+
+  <!-- Login error -->
+
+  <div
+          th:if="${param.error}"
+          class="message error">
+
+    Invalid email or password.
+
+  </div>
+
+
+  <!-- Registration success -->
+
+  <div
+          th:if="${param.registered}"
+          class="message success">
+
+    Registration successful.
+    You can now login.
+
+  </div>
+
+
+  <!-- Logout -->
+
+  <div
+          th:if="${param.logout}"
+          class="message success">
+
+    You have been logged out.
+
+  </div>
+
+
+  <form method="POST" action="/login">
+
+    <div class="form-group">
+
+      <label>Email</label>
+
+      <input
+              type="email"
+              name="username"
+              placeholder="Enter email"
+              required>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Password</label>
+
+      <input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              required>
+
+    </div>
+
+
+    <button type="submit">
+
+      Login
+
+    </button>
+
+  </form>
+
+
+  <div class="signup">
+
+    Don't have an account?
+
+    <a href="/signup">
+      Create account
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1244,6 +1244,108 @@ RESPONSIVE
 
 
 
+.user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-info b {
+    font-size: 13px;
+}
+
+.user-info small {
+    font-size: 11px;
+    opacity: 0.7;
+
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-menu {
+    position: relative;
+    margin-left: auto;
+}
+
+.user-menu-button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+
+.user-dropdown {
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 40px;
+
+    min-width: 150px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.15);
+
+    padding: 5px;
+
+    z-index: 1000;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.user-dropdown form {
+    margin: 0;
+}
+
+.logout-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #dc3545;
+
+    cursor: pointer;
+
+    border-radius: 6px;
+
+    text-align: left;
+
+    font-size: 14px;
+}
+
+.logout-button:hover {
+    background: #f8d7da;
+}
+
+
+
 
 
 
