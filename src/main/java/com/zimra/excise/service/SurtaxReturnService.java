@@ -52,7 +52,7 @@ public class SurtaxReturnService {
 
 
         // ==========================================
-        // Creating Surtax Return Model for saving
+        // Creating Surtax Return Model for saving a surtax return
         // ==========================================
 
 
